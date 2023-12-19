@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles/index.css">
+    <link rel="stylesheet" href="/static/styles/common.css">
+    <title>Navigation Menu</title>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showDiv('home')">Home</a></li>
+            <li><a href="#" onclick="showDiv('makeATrip')">Make A Trip</a></li>
+            <li><a href="#" onclick="showDiv('purchaseFuel')">Purchase Fuel</a></li>
+            <li><a href="#" onclick="showDiv('statistics')">Statistics</a></li>
+            <li><a href="#" onclick="showDiv('profiles')">Profiles</a></li>
+            <li id="logout" class="float-right">
+                <button onclick="logoutButtonClick()">Logout</button>
+            </li>
+
+
+        </ul>
+    </nav>
+</header>
+
+<div id="home" class="content hidden">
+    <h2>Profile Information</h2>
+
+
+    <table class="home-table">
+        <tr>
+            <td>Profile name</td>
+            <td id="profile_name_value">-</td>
+        </tr>
+        <tr>
+            <td>Aeroplane model</td>
+            <td id="aeroplane_model_value">-</td>
+        </tr>
+
+        <tr>
+            <td>Consumption (base)</td>
+            <td id="consumption_base_value">-</td>
+        </tr>
+        <tr>
+            <td>Consumption (full load)</td>
+            <td id="consumption_fullload_value">-</td>
+        </tr>
+    </table>
+
+
+    <h2>Current Status</h2>
+
+
+    <table class="home-table">
+        <tr>
+            <td>Current Airport</td>
+            <td id="airport_info_to_value">-</td>
+        </tr>
+        <tr>
+            <td>Euro Balance</td>
+            <td id="euro_balance_value">-</td>
+        </tr>
+
+        <tr>
+            <td>Normal Fuel Balance</td>
+            <td id="fuel_balance_normal_value">-</td>
+        </tr>
+        <tr>
+            <td>SAF Fuel Balance</td>
+            <td id="fuel_balance_saf_value">-</td>
+        </tr>
+    </table>
+
+
+    <h2>Last trip info</h2>
+
+    <table class="home-table">
+        <tr>
+            <td>From</td>
+            <td id="airport_info_from_value">-</td>
+        </tr>
+        <tr>
+            <td>To</td>
+            <td id="airport_info_to2_value">-</td>
+        </tr>
+
+        <tr>
+            <td>Passenger on-board</td>
+            <td id="last_trip_passenger_value">-</td>
+        </tr>
+        <tr>
+            <td>Distance covered</td>
+            <td id="last_trip_distance_value">-</td>
+        </tr>
+
+        <tr>
+            <td>Fuel consumption (normal)</td>
+            <td id="last_trip_consumption_normal_value">-</td>
+        </tr>
+        <tr>
+            <td>Fuel consumption (saf)</td>
+            <td id="last_trip_consumption_saf_value">-</td>
+        </tr>
+
+        <tr>
+            <td>Earning</td>
+            <td id="last_trip_earning_value">-</td>
+        </tr>
+        <tr>
+            <td>Remarks</td>
+            <td id="last_trip_remarks_value">-</td>
+        </tr>
+    </table>
+
+</div>
+
+<div id="makeATrip" class="content hidden">
+    <h2>Make A Trip</h2>
+
+    <h3>Current Status</h3>
+
+    <table class="home-table">
+        <tr>
+            <td>Current Airport</td>
+            <td id="airport_info_to1_value">-</td>
+        </tr>
+        <tr>
+            <td>Euro Balance</td>
+            <td id="euro_balance1_value">-</td>
+        </tr>
+
+        <tr>
+            <td>Normal Fuel Balance</td>
+            <td id="fuel_balance_normal1_value">-</td>
+        </tr>
+        <tr>
+            <td>SAF Fuel Balance</td>
+            <td id="fuel_balance_saf1_value">-</td>
+        </tr>
+    </table>
+
+    <h3>Destinations</h3>
+
+    <div id="destination_list">
+    </div>
+
+    <br>
+    <br>
+
+    <input type="checkbox" id="use_saf_fuel" name="use_saf_fuel" required/>
+    <label for="use_saf_fuel">Use SAF fuel</label>
+
+    <br>
+
+    <button onclick="startFly()">Let's Fly</button>
+
+    <div id="output_result">
+
+    </div>
+
+</div>
+
+<div id="purchaseFuel" class="content hidden">
+    <h2>Purchase Fuel</h2>
+
+    <h3>Current Status</h3>
+
+    <table class="home-table">
+        <tr>
+            <td>Current Airport</td>
+            <td id="airport_info_to_purchase_value">-</td>
+        </tr>
+        <tr>
+            <td>Euro Balance</td>
+            <td id="euro_balance_purchase_value">-</td>
+        </tr>
+
+        <tr>
+            <td>Normal Fuel Balance</td>
+            <td id="fuel_balance_normal_purchase_value">-</td>
+        </tr>
+        <tr>
+            <td>SAF Fuel Balance</td>
+            <td id="fuel_balance_saf_purchase_value">-</td>
+        </tr>
+    </table>
+    <br>
+    <br>
+
+    <table>
+        <tr>
+            <td><label for="normal_fuel">Normal Fuel:</label></td>
+            <td><input type="number" id="normal_fuel" name="normal_fuel" min="0" max="10000000000" width="100px"></td>
+            <td>
+                <button onclick="buyNormalFuel()">Buy</button>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="saf_fuel">SAF Fuel:</label></td>
+            <td><input type="number" id="saf_fuel" name="saf_fuel" min="0" max="10000000000" width="100px"></td>
+            <td>
+                <button onclick="buySAFFuel()">Buy</button>
+            </td>
+        </tr>
+    </table>
+
+    <p id="buy_fuel_message" class="hidden"></p>
+
+</div>
+
+<div id="statistics" class="content  hidden">
+    <h2>Statistics</h2>
+    <p id="statistics_table"></p>
+</div>
+
+<div id="profiles" class="content hidden">
+    <h2>Profile</h2>
+    <p id="selectAProfileMessage" class="hidden">
+        Please select a profile to continue ...
+    </p>
+
+    <label for="profileSelector">Current Profile: </label>
+    <select id="profileSelector" onchange="selectorResetErrorMessage()">
+    </select>
+    <button onclick="saveProfile()"> Save</button>
+
+    <p id="profileSelectError" class="hidden">Unable to change profile. Please refresh the page and try again</p>
+    <p id="profileSelectSuccess" class="hidden">Profile changed successfully</p>
+    <hr/>
+
+    <p>Create new profile</p>
+
+    <label for="profile_name">Profile Name:</label>
+    <input type="text" id="profile_name" name="profile_name" required><br>
+
+    <p id="profileSaveError" class="hidden">Unable to save profile. Please try a different name.</p>
+    <p id="profileSaveSuccess" class="hidden">Profile created successfully and saved as current profile</p>
+
+    <button onclick="createNewProfile()"> Create</button>
+</div>
+
+<script src="/static/js/index-script.js"></script>
+<script src="/static/js/ajax-scripts.js"></script>
+<script src="/static/js/common.js"></script>
+</body>
+</html>

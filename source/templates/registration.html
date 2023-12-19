@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="/static/styles/registration.css">
+    <link rel="stylesheet" href="/static/styles/common.css">
+</head>
+<body>
+<div class="registration-container">
+    <h2>Registration</h2>
+    <p id="reg-failed-text" class="hidden">Unable to create new user! <br> Please make sure the username is new.</p>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br>
+
+    <label for="full_name">Full Name:</label>
+    <input type="text" id="full_name" name="full_name" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <p>Already have an account?<br> <a href="/login">Click here to login</a></p>
+
+    <button onclick="registerButtonClick()">Register</button>
+
+</div>
+<script src="/static/js/ajax-scripts.js"></script>
+<script src="/static/js/registration.js"></script>
+<script src="/static/js/common.js"></script>
+</body>
+</html>
